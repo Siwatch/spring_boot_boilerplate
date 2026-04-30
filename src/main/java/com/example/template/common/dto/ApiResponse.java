@@ -18,10 +18,14 @@ public class ApiResponse<T> {
     private T data;
 
     public static <T> ApiResponse<T> success(T data) {
+        return success(200, "Operation successful", data);
+    }
+
+    public static <T> ApiResponse<T> success(int status, String message, T data) {
         return ApiResponse.<T>builder()
                 .timestamp(LocalDateTime.now())
-                .status(200)
-                .message("Operation successful")
+                .status(status)
+                .message(message)
                 .data(data)
                 .build();
     }
