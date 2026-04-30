@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: spring-be-template
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/template_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+logging:
+  level:
+    com.example.template: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
